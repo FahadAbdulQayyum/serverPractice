@@ -30,12 +30,17 @@ const writeData = data => {
 // }
 
 const loginUser = async (email, password, userId) => {
-    const users = await readData();
-    const matched = users.find(u=> u.email === email);
-    if(matched) {
-        throw new Error("User with this email already exists!");
-    } else {
-        await writeData([...users, {email, password, userId}])
+    try {
+        const users = await readData();
+        const matched = users.find(u=> u.email === email);
+        if(matched) {
+            throw new Error("User with this email already exists!");
+        } else {
+            await writeData([...users, {email, password, userId}])
+            return "User created Successfully!";
+        }
+    } catch (err) {
+        throw err;
     }
 }
 
