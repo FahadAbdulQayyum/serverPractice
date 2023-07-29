@@ -1,58 +1,49 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const dataPath = path.join(process.cwd(), "models", "data.js");
+const DataPath = path.join(process.cwd(), "models", "data.js");
 
 const readData = () => {
     return new Promise((resolve, reject) => {
-        fs.readFile(dataPath, (err, data) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(JSON.parse(data.toString()));
+        fs.readFile(DataPath, (err, data) => {
+            if(err) return reject(err);
             // resolve(data);
+            resolve(JSON.parse(data.toString()));
         })
     })
 }
 
-const writeData = (data) => {
+const writeData = data => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(dataPath, JSON.stringify(data), (err) => {
-            if (err) {
-                return reject(err);
+        fs.writeFile(DataPath, JSON.stringify(data), (error) => {
+            if(error) {
+                reject(error);
             }
             resolve();
         })
     })
-};
+}
 
-const createUser = async (email, password, userId) => {
-    try {        
-        // writeData({email, password})
-        const users = await readData();
-        const matched = users.find(u => u.email === email);
-        // const matched = users.find(u => console.log('u.email',u.email,email, u.email===email));
-        // const matched = users.filter(u => u.email === email);
-        if(!!matched) {
-            // throw new Error("user already exists!");
-            return "User already exists";
-        } else {
-            await writeData([...users, {email, password, userId}])
-            return "User created Successfully!";
-        }
-    } catch (err) {
-        throw err;
+// const loginUser = (email, password, userId) => {
+//     writeData([{email, password, userId}])
+//     console.log('Data written!');
+// }
+
+const loginUser = async (email, password, userId) => {
+    const users = await readData();
+    const matched = users.find(u=> u.email === email);
+    if(matched) {
+        throw new Error("User with this email already exists!");
+    } else {
+        await writeData([...users, {email, password, userId}])
     }
 }
 
-const findUser = async (email) => {
-    try {
-        const users = await readData();
-        const matched = users.find(u=> u.email === email);
-        return matched;
-    } catch (err) {
-        throw err;
-    }
-}
+// const loginUser = async (email, password, userId) => {
+//     await writeData({email, password, userId})
+//     console.log('Data written!');
+// }
 
-module.exports = {createUser,findUser};
+module.exports = {
+    loginUser
+}
