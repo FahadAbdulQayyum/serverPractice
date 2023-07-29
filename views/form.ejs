@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>EJS form</title>
+</head>
+<body>
+    <h1>AsSalamOAalikum, <%=me%></h1>
+    <h3>Add Todo</h3>
+    <form action="/form/submit" method="POST">
+        <input name="data" placeholder="Enter your input"/>
+        <!-- <input type="submit"/> -->
+        <button>Submit</button>
+    </form>
+    
+    <h3>Mark as done todo</h3>
+    <form action="/form/markAsDone" method="POST">
+        <input name="data" placeholder="Enter your input"/>
+        <!-- <input type="submit"/> -->
+        <button>Submit</button>
+    </form>
+</body>
+</html>
