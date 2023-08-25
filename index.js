@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use('/', routes);
 
+// EJS - Embedded JavaScript applicable setup for server too when needed
 app.set("view engine","ejs");
 app.set("views","views");
 
