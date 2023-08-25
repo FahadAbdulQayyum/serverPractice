@@ -21,6 +21,7 @@ app.use('/', routes);
 
 // EJS - Embedded JavaScript applicable setup for server too when needed
 app.set("view engine","ejs");
+// Specified the folder name by 'views' as the ejs source will be built and developed in view folder
 app.set("views","views");
 
 // Shows in terminal when server runs
