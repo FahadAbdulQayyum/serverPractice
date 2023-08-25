@@ -15,6 +15,7 @@ app.use(express.static(path.join(process.cwd(),"public")));
 
 // app use the express framework for fetching the data and making it presentable according to its type i.e., json
 app.use(express.json());
+// app uses the express to make the data into valid json
 app.use(express.urlencoded({extended:false}));
 app.use('/', routes);
 
