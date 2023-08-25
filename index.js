@@ -7,6 +7,7 @@ const routes = require('./routes');
 
 const app = express();
 
+// Runs on port defined in the .env setup or here in this case, otherwise run on the 8080 
 const PORT = process.env.NODE || 8080;
 
 app.use(express.static(path.join(process.cwd(),"public")));
