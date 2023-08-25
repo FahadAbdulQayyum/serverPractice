@@ -10,6 +10,7 @@ const app = express();
 // Runs on port defined in the .env setup or here in this case, otherwise run on the 8080 
 const PORT = process.env.NODE || 8080;
 
+// app use the express framework for fetching the data and making it presentable according to its type i.e., json
 app.use(express.static(path.join(process.cwd(),"public")));
 
 app.use(express.json());
