@@ -1,5 +1,8 @@
+// importing the express framework
 const express = require('express');
+// importing the path
 const path = require('path');
+// importing the routes directory
 const routes = require('./routes');
 
 const app = express();
