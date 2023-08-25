@@ -18,5 +18,6 @@ app.set("views","views");
 // Shows in terminal when server runs
 
 app.listen(PORT, () => {
+    // This console will be shown in the terminal when server runs successfully!
     console.log(`Server is running on ${PORT} PORT!`);
 })
