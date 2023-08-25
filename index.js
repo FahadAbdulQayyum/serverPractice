@@ -15,6 +15,8 @@ app.use('/', routes);
 app.set("view engine","ejs");
 app.set("views","views");
 
+// Shows in terminal when server runs
+
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT} PORT!`);
 })
